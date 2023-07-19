@@ -10,8 +10,6 @@
 
 #include "hr202_library.h"
 
-HR202_LIBRARY
-
 HR202_SENSOR::HR202_SENSOR(long rs_value, int hum_pin, int tmp_pin, int ps_pin, int ps2_pin, int tmp_beta)
 {
 	resistor_value = rs_value;
