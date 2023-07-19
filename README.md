@@ -33,3 +33,8 @@ Thermistor:
 HR202 sensor:
 
 [pulse_pin] -------- [10k resistor]-------(analog humidity_pin)----------[HR202]--------[pulse2_pin]
+
+
+ESP32 SUPPORT:
+while developing this library, we tested it on ESP32, however readings were not good due to the pretty bad ADC present on ESP32 boards, so we can't guarantee good results on ESP32 boards.If you desired to try anyway, just call the following function in your void setup() function before reading the sensor:
+analogReadResolution(10);
