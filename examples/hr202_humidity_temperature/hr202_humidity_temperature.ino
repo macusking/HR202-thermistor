@@ -6,6 +6,17 @@
 * BUILD DATE: 07/19/2023
 
 * THIS IS AN OPEN-SOURCE PROJECT. FEEL FREE TO SHARE OR MODIFY AT YOUR WILL.
+
+WIRING DIAGRAM:
+
+Thermistor:
+
+[+5V]----------[10k resistor]-----(analog temp_pin)------[10k NTC]------------ [GROUND]
+
+HR202 sensor:
+
+[pulse_pin] -------- [10k resistor]-------(analog humidity_pin)----------[HR202]--------[pulse2_pin]
+
 */
 
 #include "hr202_library.h"
