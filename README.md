@@ -22,6 +22,7 @@ LIMITATIONS:
 
 IMPORTANT:
 This library will output values above 100% and below 0% for humidity, that will allow you to calibrate the sensor if desired. It's recommended to trim the data between 0-100% before using.
+Accordingly to HR202's Datasheet, it's supposed to run continually with 1.5AC maximum. Since Arduino outputs 5V, we limited the sensor update rate to 1 update for every 5 seconds to avoid continuous readings in fast loops, avoiding to damage the sensor. Any attempt to read faster than this will result in the function returning the last updated value. The temperature data can be read at any sample rate desired!
 
 WIRING DIAGRAM:
 
