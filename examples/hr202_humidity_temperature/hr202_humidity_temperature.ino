@@ -3,26 +3,23 @@
 * LIBRARY VERSION: 1.0
 * DEVELOPER: MATHEUS STEINMETZ (macusking)
 * DATE FORMAT: MM/DD/YY
-* BUILD DATE: 07/19/2023
-
+* BUILD DATE: 07/20/2023
+*
 * THIS IS AN OPEN-SOURCE PROJECT. FEEL FREE TO SHARE OR MODIFY AT YOUR WILL.
-
-WIRING DIAGRAM:
-
-Thermistor:
-
-[+5V]----------[10k resistor]-----(analog temp_pin)------[10k NTC]------------ [GROUND]
-
-HR202 sensor:
-
-[pulse_pin] -------- [10k resistor]-------(analog humidity_pin)----------[HR202]--------[pulse2_pin]
-
 */
 
-#include "hr202_library.h"
+#include <hr202_library.h>
 #include <Wire.h>
 
-HR202_SENSOR SENSOR1(10000, A0 , A1, 5, 6, 3950); // HR202 SERIES RESISTOR, HUMIDITY PIN, TEMPERATURE PIN, PULSE PIN, PULSE 2 PIN, Thermistor BETA
+#define SERIES_RESISTOR 10000 //  HR202 SERIES RESISTOR. RECOMMENDED VALUE IS 10k
+#define HUMIDITY_PIN A0   //  HR202 HUMIDITY READING PIN (ANALOG PIN)
+#define TEMPERATURE_PIN A1  // THERMISTOR READING PIN (ANALOG PIN)
+#define PULSE1_PIN 5  // PULSE PIN FOR HR202 (DIGITAL PIN)
+#define PULSE2_PIN 6  //  PULSE2 PIN FOR HR202 (DIGITAL PIN)
+#define THERMISTOR_BETA 3950  //  THERMISTOR BETA VALUE (TYPICAL VALUE IS AROUND 3000 ~ 4000. READ THERMISTOR'S DATASHEET)
+
+
+HR202_SENSOR SENSOR1(SERIES_RESISTOR, HUMIDITY_PIN , TEMPERATURE_PIN, PULSE1_PIN, PULSE2_PIN, THERMISTOR_BETA);
 
 void setup() 
 {
@@ -41,5 +38,6 @@ void loop()
   Serial.print(humidity);
   Serial.println(" %");
 
-  delay(10000);
+  delay(5000);
 }
+
